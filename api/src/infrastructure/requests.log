@@ -1,0 +1,4 @@
+::ffff:127.0.0.1 - GET / 200 4.375 ms - 6 -
+::ffff:127.0.0.1 - GET /favicon.ico 404 1.934 ms - 150 -
+::ffff:127.0.0.1 - GET / 200 4.141 ms - 6 -
+::ffff:127.0.0.1 - GET /favicon.ico 404 1.891 ms - 150 -
