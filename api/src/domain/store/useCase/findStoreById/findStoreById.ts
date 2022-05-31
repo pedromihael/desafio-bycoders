@@ -1,9 +1,9 @@
 import { AppDataSource } from "@infrastructure/interface/database/data-source"
 import { Request } from "express"
-import { Store } from "@entity/Store"
+import { Stores } from "@entity/Stores"
 
 export class FindStoreById {
-  private storeRepository = AppDataSource.getRepository(Store)
+  private storeRepository = AppDataSource.getRepository(Stores)
   private request: Request
 
   constructor(request: Request) {
@@ -11,7 +11,7 @@ export class FindStoreById {
   }
 
   async execute() {
-    return this.storeRepository.findOne({where: {id: parseInt(this.request.params.id)}})
+    return this.storeRepository.findOne({where: {id: this.request.params.id}})
   }
 
 }

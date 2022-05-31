@@ -1,9 +1,9 @@
 import { AppDataSource } from "@infrastructure/interface/database/data-source"
 import { Request } from "express"
-import { Store } from "@entity/Store"
+import { Stores } from "@entity/Stores"
 
 export class RemoveStore {
-  private storeRepository = AppDataSource.getRepository(Store)
+  private storeRepository = AppDataSource.getRepository(Stores)
   private request: Request
 
   constructor(request: Request) {
@@ -11,7 +11,7 @@ export class RemoveStore {
   }
 
   async execute() {
-    const storeToRemove = await this.storeRepository.findOneBy({ id: parseInt(this.request.params.id) })
+    const storeToRemove = await this.storeRepository.findOneBy({ id: this.request.params.id })
     if (storeToRemove) {
       try {
         return this.storeRepository.remove(storeToRemove)
