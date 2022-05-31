@@ -1,21 +1,22 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Operation } from "@entity/Operation"
-import { Owner } from "@entity/Owner"
-import { Store } from "@entity/Store"
-import { Transaction } from "@entity/Transaction"
-
+import { Operations } from "../../../entity/Operations"
+import { Owners } from "../../../entity/Owners"
+import { Stores } from "../../../entity/Stores"
+import { Transactions } from "../../../entity/Transactions"
+import path from 'path'
 
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
-    port: 5432,
+    port: 5442,
     username: "postgres",
     password: "postgres",
-    database: "stores_transactions",
+    database: "transactions_db",
     synchronize: true,
-    logging: false,
-    entities: [Operation, Owner, Store, Transaction],
-    migrations: [],
+    logging: true,
+    entities: [Operations, Owners, Stores, Transactions],
+    migrations: [path.join(__dirname, "migration/*.ts")],
+    migrationsTableName: "migrations",
     subscribers: [],
 })
