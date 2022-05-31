@@ -1,4 +1,4 @@
-// import 'reflect-metadata';
+import 'reflect-metadata';
 import 'regenerator-runtime/runtime.js';
 
 import cors from 'cors';
@@ -6,6 +6,7 @@ import express from "express"
 import bodyParser from "body-parser"
 import { AppDataSource } from "@infrastructure/interface/database/data-source"
 import { StoreRoutes } from '@domain/store/gateway/routes';
+import { OwnerRoutes } from '@domain/owner/gateway/routes';
 import { registerExpressRoutes } from '@shared/helper/registerExpressRoutes';
 import { initializeLogs } from '@shared/helper/initializeLogs';
 
@@ -22,6 +23,7 @@ AppDataSource.initialize().then(async () => {
 
   // register express routes from defined application routes
   registerExpressRoutes(app, StoreRoutes)
+  registerExpressRoutes(app, OwnerRoutes)
 
   app.listen(PORT, () => {
     console.log(`Server is running! Served in ${PORT}!`);

@@ -1,0 +1,13 @@
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /owners 404 1.359 ms - 146 {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"owner teste"}
+::1 - POST /owners 200 25.354 ms - 116 {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"owner teste","id":"3257e481-3630-4b1d-ab96-f0612833d086"}
+::1 - POST /stores - - ms - - {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste"}
+::1 - POST /owners 200 64.458 ms - 66 {"id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"owner teste"}
+::1 - POST /stores 200 13.598 ms - 121 {"owner_id":"c3f8228a-7813-4bd3-8aac-e713d6d93b21","name":"teste","cash":"0","id":"32bc4b2a-ae7a-4231-ac81-f49323ede9d3"}

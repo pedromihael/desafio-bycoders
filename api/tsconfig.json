@@ -1,6 +1,6 @@
 {
    "compilerOptions": {
-     "target": "es2017",
+     "target": "es2021",
      "module": "commonjs",
      "lib": ["ES6"],
      "allowJs": true,
@@ -15,7 +15,7 @@
      "emitDecoratorMetadata": true,
      "skipLibCheck": true,
      "baseUrl": ".",
-     "strict": true,
+     "strict": false,
      "noEmit": true,
      "forceConsistentCasingInFileNames": true,
      "paths": {

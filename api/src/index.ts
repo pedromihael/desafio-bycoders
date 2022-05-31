@@ -1,1 +1,2 @@
-import '@infrastructure/server'
+import 'reflect-metadata'
+import './infrastructure/server'
