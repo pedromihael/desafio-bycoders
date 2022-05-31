@@ -7,6 +7,7 @@ import bodyParser from "body-parser"
 import { AppDataSource } from "@infrastructure/interface/database/data-source"
 import { StoreRoutes } from '@domain/store/gateway/routes';
 import { OwnerRoutes } from '@domain/owner/gateway/routes';
+import { OperationRoutes } from '@domain/operation/gateway/routes';
 import { registerExpressRoutes } from '@shared/helper/registerExpressRoutes';
 import { initializeLogs } from '@shared/helper/initializeLogs';
 
@@ -24,6 +25,7 @@ AppDataSource.initialize().then(async () => {
   // register express routes from defined application routes
   registerExpressRoutes(app, StoreRoutes)
   registerExpressRoutes(app, OwnerRoutes)
+  registerExpressRoutes(app, OperationRoutes)
 
   app.listen(PORT, () => {
     console.log(`Server is running! Served in ${PORT}!`);
