@@ -8,6 +8,7 @@ import { AppDataSource } from "@infrastructure/interface/database/data-source"
 import { StoreRoutes } from '@domain/store/gateway/routes';
 import { OwnerRoutes } from '@domain/owner/gateway/routes';
 import { OperationRoutes } from '@domain/operation/gateway/routes';
+import { TransactionRoutes } from '@domain/transaction/gateway/routes';
 import { registerExpressRoutes } from '@shared/helper/registerExpressRoutes';
 import { initializeLogs } from '@shared/helper/initializeLogs';
 
@@ -26,6 +27,7 @@ AppDataSource.initialize().then(async () => {
   registerExpressRoutes(app, StoreRoutes)
   registerExpressRoutes(app, OwnerRoutes)
   registerExpressRoutes(app, OperationRoutes)
+  registerExpressRoutes(app, TransactionRoutes)
 
   app.listen(PORT, () => {
     console.log(`Server is running! Served in ${PORT}!`);
