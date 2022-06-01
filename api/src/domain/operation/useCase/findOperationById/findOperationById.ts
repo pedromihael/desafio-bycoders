@@ -11,7 +11,14 @@ export class FindOperationById {
   }
 
   async execute() {
-    return this.operationRepository.findOne({where: {id: this.request.params.id}})
+    const operation = await this.operationRepository.findOne({ where: { id: this.request.params.id } })
+    if (!operation) {
+      return {
+        code: 404,
+        entity: "Operation",
+        message: `Operation with id ${this.request.params.id} not found.`
+      }
+    } return operation
   }
 
 }

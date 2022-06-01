@@ -14,7 +14,14 @@ export class RemoveOperation {
     const operationToRemove = await this.operationRepository.findOneBy({ id: this.request.params.id })
     if (operationToRemove) {
       try {
-        return this.operationRepository.remove(operationToRemove)
+        const operation = await this.operationRepository.remove(operationToRemove)
+        if (!operation) {
+          return {
+            code: 404,
+            entity: "Operation",
+            message: `Operation with id ${this.request.params.id} not removed.`
+          }
+        } return operation
       } catch (error) {
         return error
       }

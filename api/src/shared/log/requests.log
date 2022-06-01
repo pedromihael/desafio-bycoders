@@ -17,3 +17,12 @@
 ::1 - GET /owners/name 200 25.416 ms - 71 {"name":"pix da silva jr.","id":"18d919f3-8c3a-4a1c-b1df-197f4982c6da"}
 ::1 - GET /operations/type/2 200 146.399 ms - 104 {}
 ::1 - GET /operations/type/20 - - ms - - {}
+::1 - GET /operations/type/20 200 13.237 ms - 29 {}
+::1 - GET /operations/type/20 - - ms - - {}
+::1 - GET /operations/type/20 200 12.020 ms - 2 {}
+::1 - GET /operations/type/20 200 12.941 ms - 42 {}
+::1 - GET /operations/type/20 200 14.218 ms - 44 {}
+::1 - GET /operations/type/20 200 11.989 ms - 79 {}
+::1 - POST /operations - - ms - - {}
+::1 - POST /operations 200 3.321 ms - 2 {}
+::1 - POST /operations 200 4.826 ms - 2 {}

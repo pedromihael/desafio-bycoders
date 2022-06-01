@@ -10,7 +10,15 @@ export class FindOperationByType {
   }
 
   async execute() {
-    return this.operationRepository.findOne({where: {type: this.type}})
+    const operation = await this.operationRepository.findOne({ where: { type: this.type } })
+    if (!operation) { 
+      return {
+        code: 404,
+        entity: "Operation",
+        message: `Operation with type ${this.type} not found.`
+      }
+    }
+    return operation
   }
 
 }

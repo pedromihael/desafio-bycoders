@@ -33,14 +33,11 @@ export class TransactionController {
         this.findOperationByTypeUseCase = new FindOperationByType(parseInt(request.body.type))
         const operation = await this.findOperationByTypeUseCase.execute()
 
-        if (!operation) {
-            return {
-                error: 'OperationNotFound'
-            }
+        if (operation) {
+            this.saveTransactionUseCase = new SaveTransaction(request, { store_id: store.id })
+            return this.saveTransactionUseCase.execute()
         }
         
-        this.saveTransactionUseCase = new SaveTransaction(request, { store_id: store.id })
-        return this.saveTransactionUseCase.execute()
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
