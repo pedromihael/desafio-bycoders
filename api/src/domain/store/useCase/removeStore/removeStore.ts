@@ -14,7 +14,14 @@ export class RemoveStore {
     const storeToRemove = await this.storeRepository.findOneBy({ id: this.request.params.id })
     if (storeToRemove) {
       try {
-        return this.storeRepository.remove(storeToRemove)
+        const store = await this.storeRepository.remove(storeToRemove)
+        if (!store) {
+          return {
+            code: 404,
+            entity: "Store",
+            message: `Store with id ${this.request.params.id} not removed.`
+          }
+        } return store
       } catch (error) {
         return error
       }

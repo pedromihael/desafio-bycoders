@@ -12,10 +12,17 @@ export class FindsertStoreByName {
   }
 
   async execute() {
+    if (!this.name || !this.owner_id) {
+      return {
+        code: 304,
+        entity: "Store",
+        message: `Store not created. Check the body request.`
+      }
+    }
     let store = await this.storeRepository.findOne({ where: { name: this.name } })
 
     if (!store) {
-      store = await this.storeRepository.save({ name: this.name, owner_id: this.owner_id })
+      store = await this.storeRepository.save({ name: this.name })
     }
 
     return store

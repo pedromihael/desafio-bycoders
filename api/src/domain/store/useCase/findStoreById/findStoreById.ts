@@ -11,7 +11,16 @@ export class FindStoreById {
   }
 
   async execute() {
-    return this.storeRepository.findOne({where: {id: this.request.params.id}})
-  }
+    const store = await this.storeRepository.findOne({ where: { id: this.request.params.id } })
+    
+    if (!store) {
+      return {
+        code: 404,
+        entity: "Store",
+        message: `Store with id ${this.request.params.id} not found.`
+      }
+    }
+
+    return store  }
 
 }
