@@ -11,7 +11,17 @@ export class FindOwnerById {
   }
 
   async execute() {
-    return this.ownerRepository.findOne({where: {id: this.request.params.id}})
+    const owner = await this.ownerRepository.findOne({ where: { id: this.request.params.id } })
+    
+    if (!owner) {
+      return {
+        code: 404,
+        entity: "Owner",
+        message: `Owner with id ${this.request.params.id} not found.`
+      }
+    }
+
+    return owner
   }
 
 }

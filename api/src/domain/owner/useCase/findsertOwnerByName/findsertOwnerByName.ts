@@ -10,6 +10,13 @@ export class FindsertOwnerByName {
   }
 
   async execute() {
+    if (!this.name) {
+      return {
+        code: 304,
+        entity: "Owner",
+        message: `Owner not created. Check the body request.`
+      }
+    }
     let owner = await this.ownerRepository.findOne({ where: { name: this.name } })
 
     if (!owner) {

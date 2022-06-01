@@ -14,7 +14,14 @@ export class RemoveOwner {
     const ownerToRemove = await this.ownerRepository.findOneBy({ id: this.request.params.id })
     if (ownerToRemove) {
       try {
-        return this.ownerRepository.remove(ownerToRemove)
+        const owner = await this.ownerRepository.remove(ownerToRemove)
+        if (!owner) {
+          return {
+            code: 404,
+            entity: "Owner",
+            message: `Owner with id ${this.request.params.id} not removed.`
+          }
+        } return owner
       } catch (error) {
         return error
       }
