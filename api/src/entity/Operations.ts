@@ -11,12 +11,12 @@ export enum OperationSign {
 export class Operations {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id?: string
 
     @Column()
     description: string
 
-    @Column()
+    @Column({ unique: true })
     type: number
 
     @Column()
