@@ -19,7 +19,7 @@ export class OperationController {
     }
     
     async oneByType(request: Request, response: Response, next: NextFunction) {
-        this.findOperationByTypeUsecase = new FindOperationByType(request)
+        this.findOperationByTypeUsecase = new FindOperationByType(parseInt(request.params.type))
         return this.findOperationByTypeUsecase.execute()
     }
 
