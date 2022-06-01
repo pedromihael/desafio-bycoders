@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express"
-import { FindAllOwners, FindOwnerById, RemoveOwner, SaveOwner } from "../useCase"
+import { FindAllOwners, FindOwnerById, FindsertOwnerByName, RemoveOwner, SaveOwner } from "../useCase"
 
 export class OwnerController {
     private findAllOwnersUseCase: FindAllOwners
     private findOwnerByIdUseCase: FindOwnerById
+    private findsertOwnerByNameUseCase: FindsertOwnerByName
     private removeOwnerUseCase: RemoveOwner
     private saveOwnerUseCase: SaveOwner
 
@@ -15,6 +16,11 @@ export class OwnerController {
     async one(request: Request, response: Response, next: NextFunction) {
         this.findOwnerByIdUseCase = new FindOwnerById(request)
         return this.findOwnerByIdUseCase.execute()
+    }
+
+    async oneByName(request: Request, response: Response, next: NextFunction) {
+        this.findsertOwnerByNameUseCase = new FindsertOwnerByName(request)
+        return this.findsertOwnerByNameUseCase.execute()
     }
 
     async save(request: Request, response: Response, next: NextFunction) {

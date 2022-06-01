@@ -7,6 +7,11 @@ export const OwnerRoutes = [{
     action: "all"
 }, {
     method: "get",
+    route: "/owners/name/",
+    controller: OwnerController,
+    action: "oneByName"
+}, {
+    method: "get",
     route: "/owners/:id",
     controller: OwnerController,
     action: "one"

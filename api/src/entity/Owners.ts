@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 export class Owners {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id?: string
 
     @Column()
     name: string

@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
 export class Transactions {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id?: string
 
     @Column({name: 'value',  type: 'decimal', scale: 2, default: 0.0, transformer: new DecimalTransformer()})
     value: number

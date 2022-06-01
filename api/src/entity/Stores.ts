@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
 export class Stores {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id?: string
 
     @Column({ nullable: false })
     name: string
