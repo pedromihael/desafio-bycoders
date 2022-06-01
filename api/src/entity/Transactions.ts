@@ -29,7 +29,7 @@ export class Transactions {
     store_id: string
     
     @Column({ name: 'operation_type', nullable: false, type: 'int' })
-    operation_type: string
+    operation_type: number
 
     @ManyToOne(type => Stores, store => store.transactions) store?: Stores; 
     

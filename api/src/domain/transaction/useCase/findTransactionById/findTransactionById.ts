@@ -11,7 +11,17 @@ export class FindTransactionById {
   }
 
   async execute() {
-    return this.transactionRepository.findOne({where: {id: this.request.params.id}})
+    const transaction = await this.transactionRepository.findOne({ where: { id: this.request.params.id } })
+    
+    if (!transaction) {
+      return {
+        code: 404,
+        entity: "Transaction",
+        message: `Transaction with id ${this.request.params.id} not found.`
+      }
+    }
+
+    return transaction
   }
 
 }

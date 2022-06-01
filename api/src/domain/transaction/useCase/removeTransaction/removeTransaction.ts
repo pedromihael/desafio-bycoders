@@ -14,7 +14,14 @@ export class RemoveTransaction {
     const transactionToRemove = await this.transactionRepository.findOneBy({ id: this.request.params.id })
     if (transactionToRemove) {
       try {
-        return this.transactionRepository.remove(transactionToRemove)
+        const transaction = await this.transactionRepository.remove(transactionToRemove)
+        if (!transaction) {
+          return {
+            code: 404,
+            entity: "Transaction",
+            message: `Transaction with id ${this.request.params.id} not removed.`
+          }
+        } return transaction
       } catch (error) {
         return error
       }

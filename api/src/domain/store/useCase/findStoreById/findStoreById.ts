@@ -21,6 +21,7 @@ export class FindStoreById {
       }
     }
 
-    return store  }
+    return store
+  }
 
 }
