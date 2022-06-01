@@ -1,4 +1,4 @@
-import { OperationSign } from "../../entity/Operations";
+import { OperationSign } from "../../../entity/Operations";
 
 export interface IOperations {
   description: string,
