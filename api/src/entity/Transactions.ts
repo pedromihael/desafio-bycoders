@@ -25,9 +25,15 @@ export class Transactions {
     @Column()
     hour: Date
 
-    @ManyToOne(type => Stores, store => store.transactions) store_id: Stores; 
+    @Column({ name: 'storeId', nullable: false, type: 'uuid' })
+    store_id: string
+    
+    @Column({ name: 'operation_type', nullable: false, type: 'int' })
+    operation_type: string
 
-    @ManyToOne(type => Operations, operation => operation.transactions) operation_id: Operations; 
+    @ManyToOne(type => Stores, store => store.transactions) store?: Stores; 
+    
+    @ManyToOne(type => Operations, operation => operation.transactions) operation?: Operations; 
     
     constructor() {
         if (!this.id) {
