@@ -16,7 +16,10 @@ export class Stores {
     @Column({name: 'cash',  type: 'decimal', scale: 2, default: 0.0, transformer: new DecimalTransformer(), nullable: true})
     cash?: number
 
-    @ManyToOne(type => Owners, owner => owner.stores, { nullable: false }) owner_id: Owners; 
+    @Column({ name:'ownerId', nullable: false, type: 'uuid' })
+    owner_id: string
+
+    @ManyToOne(type => Owners, owner => owner.stores, { nullable: false }) owner?: Owners; 
 
     @OneToMany(type => Transactions, transaction => transaction.store_id) transactions?: Transactions[]; 
     

@@ -28,7 +28,7 @@ export class Operations {
     })
     sign: OperationSign
 
-    @OneToMany(type => Transactions, transaction => transaction.operation_id, { nullable: true }) transactions?: Transactions[];  
+    @OneToMany(type => Transactions, transaction => transaction.operation, { nullable: true }) transactions?: Transactions[];  
 
     constructor() {
         if (!this.id) {

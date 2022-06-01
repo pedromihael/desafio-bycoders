@@ -24,4 +24,6 @@ import { AppDataSource } from "../data-source"
     } catch (error) {
         console.log(error)
     }
+
+    return
 })()

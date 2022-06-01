@@ -7,6 +7,11 @@ export const StoreRoutes = [{
     action: "all"
 }, {
     method: "get",
+    route: "/stores/name",
+    controller: StoreController,
+    action: "oneByName"
+}, {
+    method: "get",
     route: "/stores/:id",
     controller: StoreController,
     action: "one"

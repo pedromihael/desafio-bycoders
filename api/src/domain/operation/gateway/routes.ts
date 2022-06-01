@@ -11,6 +11,11 @@ export const OperationRoutes = [{
     controller: OperationController,
     action: "one"
 }, {
+    method: "get",
+    route: "/operations/type/:type",
+    controller: OperationController,
+    action: "oneByType"
+}, {
     method: "post",
     route: "/operations",
     controller: OperationController,

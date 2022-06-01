@@ -1,20 +1,19 @@
 import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
 import { Owners } from "@entity/Owners"
 
 export class FindsertOwnerByName {
   private ownerRepository = AppDataSource.getRepository(Owners)
-  private request: Request
+  private name: string
 
-  constructor(request: Request) {
-    this.request = request
+  constructor(name: string) {
+    this.name = name
   }
 
   async execute() {
-    let owner = await this.ownerRepository.findOne({ where: { name: this.request.body.name } })
+    let owner = await this.ownerRepository.findOne({ where: { name: this.name } })
 
     if (!owner) {
-      owner = await this.ownerRepository.save(this.request.body)
+      owner = await this.ownerRepository.save({ name: this.name })
     }
 
     return owner
