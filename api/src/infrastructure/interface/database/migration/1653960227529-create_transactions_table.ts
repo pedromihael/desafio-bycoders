@@ -13,8 +13,8 @@ export class createTransactionsTable1653960227529 implements MigrationInterface 
                         isPrimary: true
                     },
                     {
-                        name: "operation_id",
-                        type: "uuid",
+                        name: "operation_type",
+                        type: "int",
                     },
                     {
                         name: "store_id",
@@ -56,16 +56,16 @@ export class createTransactionsTable1653960227529 implements MigrationInterface 
         await queryRunner.createForeignKey(
             'transactions',
             new TableForeignKey({
-                columnNames: ['operation_id'],
+                columnNames: ['operation_type'],
                 referencedTableName: 'operations',
-                referencedColumnNames: ['id']
+                referencedColumnNames: ['type']
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey('transactions', 'store_id')
-        await queryRunner.dropForeignKey('transactions', 'operation_id')
+        await queryRunner.dropForeignKey('transactions', 'operation_type')
         await queryRunner.dropTable('transactions')
     }
 
