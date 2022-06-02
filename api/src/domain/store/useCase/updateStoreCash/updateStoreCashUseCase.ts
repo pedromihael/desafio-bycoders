@@ -21,7 +21,7 @@ export class UpdateStoreCash {
         const store = await this.findsertStoreByNameUseCase.execute()
         const updated = await this.storeRepository.update(
           { id: store.id },
-          { cash: parseFloat(store.cash + parseFloat(this.request.body.value)) })
+          { cash: parseFloat(parseFloat(store.cash) + parseFloat(this.request.body.value)) })
         return updated
       } else {
         return {

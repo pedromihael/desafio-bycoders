@@ -7,6 +7,11 @@ export const TransactionRoutes = [{
     action: "all"
 }, {
     method: "get",
+    route: "/transactions/store",
+    controller: TransactionController,
+    action: "listByStore"
+}, {
+    method: "get",
     route: "/transactions/:id",
     controller: TransactionController,
     action: "one"

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { FindOperationByType } from "~/domain/operation/useCase"
 import { FindsertOwnerByName } from "~/domain/owner/useCase"
 import { FindsertStoreByName, UpdateStoreCash } from "~/domain/store/useCase"
-import { FindAllTransactions, FindTransactionById, RemoveTransaction, SaveTransaction } from "../useCase"
+import { FindAllTransactions, FindTransactionById, ListTransactionsByStore, RemoveTransaction, SaveTransaction } from "../useCase"
 
 export class TransactionController {
     private findAllTransactionsUseCase: FindAllTransactions
@@ -13,10 +13,16 @@ export class TransactionController {
     private removeTransactionUseCase: RemoveTransaction
     private saveTransactionUseCase: SaveTransaction
     private updateStoreCashUseCase: UpdateStoreCash
+    private listTransactionsByStoreUseCae: ListTransactionsByStore
 
     async all(request: Request, response: Response, next: NextFunction) {
         this.findAllTransactionsUseCase = new FindAllTransactions()
         return this.findAllTransactionsUseCase.execute()
+    }
+
+    async listByStore(request: Request, response: Response, next: NextFunction) {
+        this.listTransactionsByStoreUseCae = new ListTransactionsByStore()
+        return this.listTransactionsByStoreUseCae.execute()
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
