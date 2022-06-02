@@ -19,7 +19,7 @@ export class StoreController {
     }
 
     async oneByName(request: Request, response: Response, next: NextFunction) {
-        this.findsertStoreByNameUseCase = new FindsertStoreByName(request)
+        this.findsertStoreByNameUseCase = new FindsertStoreByName(request.body.name)
         return this.findsertStoreByNameUseCase.execute()
     }
 

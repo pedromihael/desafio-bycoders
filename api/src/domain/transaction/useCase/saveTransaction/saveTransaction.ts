@@ -21,9 +21,10 @@ export class SaveTransaction {
   async execute() {
     try {
       const transaction: Transactions = this.request.body
-      if (isInstanceOf(transaction, keys<ITransactions>()) && this.store) {
+      if (this.store) {
         const { store_id } = this.store
-        return this.transactionRepository.save({ ...transaction, store_id })
+        const res = await this.transactionRepository.save({ ...transaction, store_id })
+        return res
       } else {
         return {
           code: 304,

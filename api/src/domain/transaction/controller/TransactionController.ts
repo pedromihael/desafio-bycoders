@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { FindOperationByType } from "~/domain/operation/useCase"
 import { FindsertOwnerByName } from "~/domain/owner/useCase"
-import { FindsertStoreByName } from "~/domain/store/useCase"
+import { FindsertStoreByName, UpdateStoreCash } from "~/domain/store/useCase"
 import { FindAllTransactions, FindTransactionById, RemoveTransaction, SaveTransaction } from "../useCase"
 
 export class TransactionController {
@@ -12,6 +12,7 @@ export class TransactionController {
     private findsertStoreByNameUseCase: FindsertStoreByName
     private removeTransactionUseCase: RemoveTransaction
     private saveTransactionUseCase: SaveTransaction
+    private updateStoreCashUseCase: UpdateStoreCash
 
     async all(request: Request, response: Response, next: NextFunction) {
         this.findAllTransactionsUseCase = new FindAllTransactions()
@@ -30,12 +31,17 @@ export class TransactionController {
         this.findsertStoreByNameUseCase = new FindsertStoreByName(request.body.store, owner.id)
         const store = await this.findsertStoreByNameUseCase.execute()
         
-        this.findOperationByTypeUseCase = new FindOperationByType(parseInt(request.body.type))
+        this.findOperationByTypeUseCase = new FindOperationByType(parseInt(request.body.operation_type))
         const operation = await this.findOperationByTypeUseCase.execute()
 
         if (operation) {
             this.saveTransactionUseCase = new SaveTransaction(request, { store_id: store.id })
-            return this.saveTransactionUseCase.execute()
+            const transaction = await this.saveTransactionUseCase.execute()
+
+            this.updateStoreCashUseCase = new UpdateStoreCash(request, owner.id)
+            await this.updateStoreCashUseCase.execute()
+
+            return transaction
         }
         
     }
