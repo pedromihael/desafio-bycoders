@@ -6,7 +6,7 @@ import { Label } from '../../components/Label'
 export function Home() {
   return (
     <Container>
-      <Label>Drag and drop your CNAB file</Label>
+      <Label>Upload your CNAB file</Label>
       <Dropzone />
     </Container>
   )

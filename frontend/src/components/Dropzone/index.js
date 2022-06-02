@@ -2,11 +2,15 @@ import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { mapContent } from '../../helpers/mapTransactions'
 import { useConnection } from '../../hooks/useConnection'
+import { toast } from 'react-toastify';
 import { FormBox } from './styles'
 
 const validateContent = (data) => {
   const transactions = data.split('\n').filter(t => t !== '' && t.length === 80)
-  if (transactions.length === 0) return false
+  if (transactions.length === 0) {
+    toast.error("File is empty!")
+    return false
+  }
   return true
 }
 
@@ -33,11 +37,15 @@ export function Dropzone() {
             })
           })
 
+          toast.success("File uploaded!")
+
         }
 
       }
 
       reader.readAsText(file)
+    } else {
+      toast.error("File must be a .txt")
     }
     setLoading(false)
   }, [])
@@ -45,9 +53,9 @@ export function Dropzone() {
 
   return (
     <>
-      <FormBox isLoading={isLoading}>
+      <FormBox isLoading={isLoading} disabled={isLoading}>
         <div {...getRootProps()}>
-          <input {...getInputProps()} />
+          <input {...getInputProps()} disabled={isLoading} />
           {
             isLoading ?
               <p>Loading files ...</p> :
