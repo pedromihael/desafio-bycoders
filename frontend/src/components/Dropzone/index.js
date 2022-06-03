@@ -4,7 +4,7 @@ import { mapContent } from '../../helpers/mapTransactions'
 import { useConnection } from '../../hooks/useConnection'
 import { toast } from 'react-toastify';
 import { FormBox } from './styles'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const validateContent = (data) => {
   const transactions = data.split('\n').filter(t => t !== '' && t.length === 80)
@@ -18,17 +18,7 @@ const validateContent = (data) => {
 export function Dropzone() {
   const [isLoading, setLoading] = useState(false)
   const connection = useConnection()
-
-  const getStoresAndRedirect = useCallback(async () => {
-    const stores = await connection.get("/transactions/store")
-    return (<Navigate
-      replace={true}
-      to={{
-        pathname: "/stores",
-        state: stores
-      }}
-    />)
-  })
+  const navigate = useNavigate()
 
   const onDrop = useCallback(upload => {
     setLoading(true)
@@ -51,7 +41,7 @@ export function Dropzone() {
 
           toast.success("File uploaded!")
 
-          return getStoresAndRedirect().then()
+          return navigate('/stores')
 
         }
 

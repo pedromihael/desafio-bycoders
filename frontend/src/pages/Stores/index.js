@@ -1,22 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import BasicTable from '../../components/Table'
 import { Label } from '../../components/Label'
 import { Container } from './styles'
-import {useLocation} from 'react-router-dom'
+import { useConnection } from '../../hooks/useConnection'
 
 export function Stores() {
-  const location = useLocation()
-  const stores = location.state
+  const connection = useConnection()
+  const [stores, setStores] = useState(null)
+
+  useEffect(() => {
+    (async () => {
+      const data = await connection.get("/transactions/store")
+      setStores(data.data)
+    })()
+  }, [])
 
   return (
     <Container>
     {
-      stores.map(store => (
-        <>
-          <Label>{store.storeName} - Total: R${store.storeCash}</Label>
-          <BasicTable data={store} />
-        </>
-      ))}
+        stores && stores.map(store => {
+          // console.log("store", store)
+          return  (
+            <article>
+              <Label>{store.storeName} - Total: R${parseFloat(store.cash).toFixed(2)}</Label>
+              <BasicTable data={store} />
+            </article>
+          )
+      })}
+      
     </Container>
   )
 }

@@ -11,10 +11,11 @@ function createData(operationDescription, operationKind, operationSign, transact
   return { operationDescription, operationKind, operationSign, transactionValue };
 }
 
-export default function BasicTable(data) {
+export default function BasicTable({ data }) {
   const [rows, setRows] = useState([])
   
   useEffect(() => {
+    console.log(data)
     if (data.operations) {
       const rdata = data.operations.map(d => {
         return createData(d.operationDescription, d.operationKind, d.operationSign, d.transactionValue)
@@ -29,7 +30,7 @@ export default function BasicTable(data) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Operation Desc</TableCell>
+            <TableCell >Operation Desc</TableCell>
             <TableCell align="right">Operation Kind</TableCell>
             <TableCell align="right">Operation Sign</TableCell>
             <TableCell align="right">Transaction Value</TableCell>
