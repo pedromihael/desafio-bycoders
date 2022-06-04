@@ -144,3 +144,46 @@
 ::ffff:127.0.0.1 - POST /transactions 200 83.312 ms - 296 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":5,"costumer_cpf":"23270298056","costumer_card_number":"7677****8778","hour":"2019-03-01T18:18:08.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
 ::ffff:127.0.0.1 - POST /transactions 200 92.682 ms - 297 {"operation_type":8,"date":"2019-03-01T04:00:00.000Z","value":2,"costumer_cpf":"84515254073","costumer_card_number":"2344****1222","hour":"2019-03-01T16:32:22.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
 ::ffff:127.0.0.1 - POST /transactions 200 91.673 ms - 299 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":192,"costumer_cpf":"84515254073","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - GET /transactions/store 200 143.128 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 200 157.425 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 304 21.180 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 200 156.326 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 200 161.834 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 304 77.219 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 61.365 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 200 106.911 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 304 80.323 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 103.255 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 200 137.970 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 200 165.125 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 304 51.976 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 200 50.936 ms - 9520 {}
+::ffff:127.0.0.1 - GET /transactions/store 304 66.263 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 66.783 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 49.610 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 17.036 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 304 77.504 ms - - {}
+::ffff:127.0.0.1 - GET /transactions/store 200 85.095 ms - 9520 {}
+::ffff:127.0.0.1 - POST /transactions 200 279.548 ms - 301 {"operation_type":1,"date":"2019-03-01T04:00:00.000Z","value":200,"costumer_cpf":"55641815063","costumer_card_number":"1234****3324","hour":"2019-03-01T13:00:02.000Z","owner":"MARIA JOSEFINA","store":"LOJA DO Ó - MATRIZ"}
+::ffff:127.0.0.1 - POST /transactions 200 307.978 ms - 285 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":142,"costumer_cpf":"09620676017","costumer_card_number":"4753****3153","hour":"2019-03-01T19:34:53.000Z","owner":"JOÃO MACEDO","store":"BAR DO JOÃO"}
+::ffff:127.0.0.1 - POST /transactions 200 296.304 ms - 301 {"operation_type":5,"date":"2019-03-01T04:00:00.000Z","value":132,"costumer_cpf":"55641815063","costumer_card_number":"3123****7687","hour":"2019-03-01T18:56:07.000Z","owner":"MARIA JOSEFINA","store":"LOJA DO Ó - MATRIZ"}
+::ffff:127.0.0.1 - POST /transactions 200 289.871 ms - 299 {"operation_type":5,"date":"2019-03-01T04:00:00.000Z","value":802,"costumer_cpf":"84515254073","costumer_card_number":"3123****7687","hour":"2019-03-01T18:56:07.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - POST /transactions 200 301.359 ms - 298 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":602,"costumer_cpf":"23270298056","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 313.229 ms - 298 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":102,"costumer_cpf":"23270298056","costumer_card_number":"8473****1231","hour":"2019-03-02T03:12:33.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 63.192 ms - 299 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":6102,"costumer_cpf":"23270298056","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 64.000 ms - 304 {"operation_type":4,"date":"2019-03-01T04:00:00.000Z","value":152.32,"costumer_cpf":"55641815063","costumer_card_number":"1234****6678","hour":"2019-03-01T14:00:00.000Z","owner":"MARIA JOSEFINA","store":"LOJA DO Ó - FILIAL"}
+::ffff:127.0.0.1 - POST /transactions 200 62.563 ms - 301 {"operation_type":9,"date":"2019-03-01T04:00:00.000Z","value":102,"costumer_cpf":"55641815063","costumer_card_number":"6228****9090","hour":"2019-03-01T04:00:00.000Z","owner":"MARIA JOSEFINA","store":"LOJA DO Ó - MATRIZ"}
+::ffff:127.0.0.1 - POST /transactions 200 70.713 ms - 298 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":103,"costumer_cpf":"23270298056","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 101.292 ms - 302 {"operation_type":8,"date":"2019-03-01T04:00:00.000Z","value":102.03,"costumer_cpf":"84515254073","costumer_card_number":"2344****1222","hour":"2019-03-01T16:32:22.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - POST /transactions 200 84.550 ms - 302 {"operation_type":4,"date":"2019-06-01T04:00:00.000Z","value":506.17,"costumer_cpf":"84515254073","costumer_card_number":"1234****2231","hour":"2019-06-01T14:00:00.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - POST /transactions 200 70.071 ms - 298 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":109,"costumer_cpf":"23270298056","costumer_card_number":"8723****9987","hour":"2019-03-01T16:33:33.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 81.962 ms - 297 {"operation_type":8,"date":"2019-03-01T04:00:00.000Z","value":2,"costumer_cpf":"84515254073","costumer_card_number":"2344****1222","hour":"2019-03-01T16:32:22.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - GET /transactions/store 200 57.037 ms - 10976 {}
+::ffff:127.0.0.1 - POST /transactions 200 88.491 ms - 296 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":5,"costumer_cpf":"23270298056","costumer_card_number":"7677****8778","hour":"2019-03-01T18:18:08.000Z","owner":"JOSÉ COSTA","store":"MERCEARIA 3 IRMÃOS"}
+::ffff:127.0.0.1 - POST /transactions 200 99.559 ms - 299 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":192,"costumer_cpf":"84515254073","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - GET /transactions/store 200 71.524 ms - 10976 {}
+::ffff:127.0.0.1 - POST /transactions 200 106.142 ms - 299 {"operation_type":3,"date":"2019-03-01T04:00:00.000Z","value":122,"costumer_cpf":"84515254073","costumer_card_number":"6777****1313","hour":"2019-03-01T21:27:12.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - POST /transactions 200 95.269 ms - 285 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":112,"costumer_cpf":"09620676017","costumer_card_number":"3648****0099","hour":"2019-03-02T03:42:34.000Z","owner":"JOÃO MACEDO","store":"BAR DO JOÃO"}
+::ffff:127.0.0.1 - POST /transactions 200 97.184 ms - 285 {"operation_type":1,"date":"2019-03-01T04:00:00.000Z","value":152,"costumer_cpf":"09620676017","costumer_card_number":"1234****7890","hour":"2019-03-02T03:30:00.000Z","owner":"JOÃO MACEDO","store":"BAR DO JOÃO"}
+::ffff:127.0.0.1 - POST /transactions 200 86.687 ms - 299 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":107,"costumer_cpf":"84515254073","costumer_card_number":"8723****9987","hour":"2019-03-01T16:33:33.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - POST /transactions 200 92.047 ms - 299 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":502,"costumer_cpf":"84515254073","costumer_card_number":"8473****1231","hour":"2019-03-02T03:12:33.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}

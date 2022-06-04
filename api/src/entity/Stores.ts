@@ -21,7 +21,7 @@ export class Stores {
 
     @ManyToOne(type => Owners, owner => owner.stores, { nullable: false }) owner?: Owners; 
 
-    @OneToMany(type => Transactions, transaction => transaction.store_id) transactions?: Transactions[]; 
+    @OneToMany(type => Transactions, transaction => transaction.store_id, {cascade: true}) transactions?: Transactions[]; 
     
     constructor() {
         if (!this.id) {

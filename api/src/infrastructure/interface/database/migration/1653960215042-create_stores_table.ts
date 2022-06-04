@@ -33,7 +33,9 @@ export class createStoresTable1653960215042 implements MigrationInterface {
             new TableForeignKey({
                 columnNames: ['owner_id'],
                 referencedTableName: 'owners',
-                referencedColumnNames: ['id']
+                referencedColumnNames: ['id'],
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
             })
         )
     }

@@ -11,7 +11,7 @@ export class Owners {
     @Column()
     name: string
   
-    @OneToMany(type => Stores, store => store.owner_id, { nullable: false }) stores?: Stores[];  
+    @OneToMany(type => Stores, store => store.owner_id, { nullable: false, cascade: true }) stores?: Stores[];  
 
     constructor() {
         if (!this.id) {

@@ -49,7 +49,9 @@ export class createTransactionsTable1653960227529 implements MigrationInterface 
             new TableForeignKey({
                 columnNames: ['store_id'],
                 referencedTableName: 'stores',
-                referencedColumnNames: ['id']
+                referencedColumnNames: ['id'],
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
             })
         )
 
@@ -58,7 +60,9 @@ export class createTransactionsTable1653960227529 implements MigrationInterface 
             new TableForeignKey({
                 columnNames: ['operation_type'],
                 referencedTableName: 'operations',
-                referencedColumnNames: ['type']
+                referencedColumnNames: ['type'],
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
             })
         )
     }
