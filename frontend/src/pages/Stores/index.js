@@ -19,7 +19,6 @@ export function Stores() {
     <Container>
     {
         stores && stores.map(store => {
-          // console.log("store", store)
           return  (
             <article>
               <Label>{store.storeName} - Total: R${parseFloat(store.cash).toFixed(2)}</Label>
