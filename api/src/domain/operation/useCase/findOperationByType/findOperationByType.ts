@@ -1,16 +1,19 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Operations } from "@entity/Operations"
+import 'reflect-metadata';
+import { autoInjectable, inject } from "tsyringe"
+import { Operations } from '~/entity/Operations';
+import { IOperationRepository } from "../../repository/IOperationRepository"
 
+@autoInjectable()
 export class FindOperationByType {
-  private operationRepository = AppDataSource.getRepository(Operations)
-  private type: number
-
-  constructor(type: number) {
+  
+  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, type: number) {
     this.type = type
   }
 
-  async execute() {
-    const operation = await this.operationRepository.findOne({ where: { type: this.type } })
+  private type: number
+
+  async execute(): Promise<Operations | any> {
+    const operation = await this.operationRepository.findOneBy({ type: this.type })
     if (!operation) { 
       return {
         code: 404,

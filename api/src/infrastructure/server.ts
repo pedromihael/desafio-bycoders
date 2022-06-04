@@ -12,7 +12,7 @@ import { TransactionRoutes } from '@domain/transaction/gateway/routes';
 import { registerExpressRoutes } from '@shared/helper/registerExpressRoutes';
 import { initializeLogs } from '@shared/helper/initializeLogs';
 
-// import '@infrastructure/dependenciesRegisters';
+import '@infrastructure/middleware/ContainerRegistry';
 
 const PORT = process.env.PORT || 3006;
 

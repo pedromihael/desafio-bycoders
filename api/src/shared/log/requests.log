@@ -187,3 +187,5 @@
 ::ffff:127.0.0.1 - POST /transactions 200 97.184 ms - 285 {"operation_type":1,"date":"2019-03-01T04:00:00.000Z","value":152,"costumer_cpf":"09620676017","costumer_card_number":"1234****7890","hour":"2019-03-02T03:30:00.000Z","owner":"JOÃO MACEDO","store":"BAR DO JOÃO"}
 ::ffff:127.0.0.1 - POST /transactions 200 86.687 ms - 299 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":107,"costumer_cpf":"84515254073","costumer_card_number":"8723****9987","hour":"2019-03-01T16:33:33.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
 ::ffff:127.0.0.1 - POST /transactions 200 92.047 ms - 299 {"operation_type":2,"date":"2019-03-01T04:00:00.000Z","value":502,"costumer_cpf":"84515254073","costumer_card_number":"8473****1231","hour":"2019-03-02T03:12:33.000Z","owner":"MARCOS PEREIRA","store":"MERCADO DA AVENIDA"}
+::ffff:127.0.0.1 - GET /operations 200 17.474 ms - 2 {}
+::ffff:127.0.0.1 - GET /operations 200 14.155 ms - 998 {}

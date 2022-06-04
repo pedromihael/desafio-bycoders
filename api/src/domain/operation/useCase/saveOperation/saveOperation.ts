@@ -1,19 +1,22 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Operations } from "@entity/Operations"
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { IOperationRepository } from "../../repository/IOperationRepository"
+import { Operations } from '~/entity/Operations';
 import { IOperations } from '../../model/IOperations'
 import { keys } from 'ts-transformer-keys'
 import { isInstanceOf } from "@shared/helper/instanceOf"
 
+@autoInjectable()
 export class SaveOperation {
-  private operationRepository = AppDataSource.getRepository(Operations)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, request: Request) {
     this.request = request
   }
+  
+  private request: Request
 
-  async execute() {
+  async execute(): Promise<Operations | any> {
     try {
       const operation: Operations = this.request.body
       if (isInstanceOf(operation, keys<IOperations>())) {
