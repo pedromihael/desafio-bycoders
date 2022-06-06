@@ -11,7 +11,7 @@ let findOwnerByName: FindsertOwnerByName;
 let ownerName1: any;
 let ownerName2: any;
 
-describe('FindOwnersByName', () => {
+describe('FindsertOwnersByName', () => {
   beforeEach(() => {
     ownerRepository = new FakeOwnerRepository();
     ownerName1 = uuidv4();
