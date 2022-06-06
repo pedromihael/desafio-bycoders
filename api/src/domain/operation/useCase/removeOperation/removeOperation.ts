@@ -7,7 +7,7 @@ import { Operations } from '~/entity/Operations';
 @autoInjectable()
 export class RemoveOperation {
   
-  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, request: Request) {
+  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, request: Request | any) {
     this.request = request
   }
   
