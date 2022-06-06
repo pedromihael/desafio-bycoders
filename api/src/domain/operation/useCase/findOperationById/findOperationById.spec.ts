@@ -11,7 +11,7 @@ let findOperationById: FindOperationById;
 let operationId1: any;
 let operationId2: any;
 
-describe('FindAllOperations', () => {
+describe('FindOperationsById', () => {
   beforeEach(() => {
     operationRepository = new FakeOperationRepository();
     operationId1 = uuidv4();
