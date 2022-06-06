@@ -1,7 +1,7 @@
 import { OperationSign } from "../../../entity/Operations";
 
 export interface IOperations {
-  _id?: string,
+  id?: string,
   description: string,
   type: number,
   kind: string,

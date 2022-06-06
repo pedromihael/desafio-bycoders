@@ -7,7 +7,7 @@ export class OperationBuilder {
 
   constructor(id: string) {
     this.operationData = {
-      _id: id,
+      id,
       description: 'any description',
       type: 0,
       kind: 'any kind',

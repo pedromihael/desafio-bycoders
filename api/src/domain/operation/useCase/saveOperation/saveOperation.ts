@@ -3,14 +3,11 @@ import { Request } from 'express';
 import { autoInjectable, inject } from "tsyringe"
 import { IOperationRepository } from "../../repository/IOperationRepository"
 import { Operations } from '~/entity/Operations';
-import { IOperations } from '../../model/IOperations'
-import { keys } from 'ts-transformer-keys'
-import { isInstanceOf } from "@shared/helper/instanceOf"
 
 @autoInjectable()
 export class SaveOperation {
   
-  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, request: Request) {
+  constructor(@inject('OperationRepository') private operationRepository: IOperationRepository, request: Request | any) {
     this.request = request
   }
   
@@ -19,8 +16,9 @@ export class SaveOperation {
   async execute(): Promise<Operations | any> {
     try {
       const operation: Operations = this.request.body
-      if (isInstanceOf(operation, keys<IOperations>())) {
-        return this.operationRepository.save(operation)
+      const result = await this.operationRepository.save(operation)
+      if (result.id) {
+        return result
       } else {
         return {
           code: 304,
