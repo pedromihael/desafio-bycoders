@@ -1,29 +1,32 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Owners } from "@entity/Owners"
+import 'reflect-metadata';
+import { autoInjectable, inject } from "tsyringe"
+import { Owners } from '~/entity/Owners';
+import { IOwnerRepository } from "../../repository/IOwnerRepository"
 
-export class FindsertOwnerByName {
-  private ownerRepository = AppDataSource.getRepository(Owners)
-  private name: string
+@autoInjectable()
+export class FindOwnerByType {
 
-  constructor(name: string) {
+  constructor(@inject('OwnerRepository') private ownerRepository: IOwnerRepository, name: string) {
     this.name = name
   }
 
-  async execute() {
-    if (!this.name) {
+  private name: string
+
+  async execute(): Promise<Owners | any> {
+    try {
+      let owner = await this.ownerRepository.findOneBy({ name: this.name })
+      if (!owner) {
+        owner = await this.ownerRepository.save({ name: this.name })
+      }
+      return owner
+    } catch (error) {
       return {
-        code: 304,
+        error,
+        code: 404,
         entity: "Owner",
-        message: `Owner not created. Check the body request.`
+        message: `Owner with name ${this.name} not found.`
       }
     }
-    let owner = await this.ownerRepository.findOne({ where: { name: this.name } })
-
-    if (!owner) {
-      owner = await this.ownerRepository.save({ name: this.name })
-    }
-
-    return owner
   }
 
 }

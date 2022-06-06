@@ -1,10 +1,13 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
+import 'reflect-metadata';
 import { Owners } from "@entity/Owners"
+import { autoInjectable, inject } from "tsyringe"
+import { IOwnerRepository } from "../../repository/IOwnerRepository"
 
+@autoInjectable()
 export class FindAllOwners {
-  private ownerRepository = AppDataSource.getRepository(Owners)
+  constructor(@inject('OwnerRepository') private ownerRepository: IOwnerRepository) {}
 
-  async execute() {
+  async execute(): Promise<Owners[]> | null {
     return this.ownerRepository.find()
   }
 

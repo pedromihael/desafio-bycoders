@@ -1,16 +1,19 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Owners } from "@entity/Owners"
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { IOwnerRepository } from "../../repository/IOwnerRepository"
+import { Owners } from '~/entity/Owners';
 
+@autoInjectable()
 export class RemoveOwner {
-  private ownerRepository = AppDataSource.getRepository(Owners)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('OwnerRepository') private ownerRepository: IOwnerRepository, request: Request | any) {
     this.request = request
   }
-
-  async execute() {
+  
+  private request: Request
+  
+  async execute(): Promise<Owners | any> {
     const ownerToRemove = await this.ownerRepository.findOneBy({ id: this.request.params.id })
     if (ownerToRemove) {
       try {

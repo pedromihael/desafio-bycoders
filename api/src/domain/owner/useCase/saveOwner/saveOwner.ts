@@ -1,23 +1,24 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Owners } from "@entity/Owners"
-import { isInstanceOf } from "@shared/helper/instanceOf"
-import { IOwners } from "../../model/IOwners"
-import { keys } from 'ts-transformer-keys'
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { IOwnerRepository } from "../../repository/IOwnerRepository"
+import { Owners } from '~/entity/Owners';
 
+@autoInjectable()
 export class SaveOwner {
-  private ownerRepository = AppDataSource.getRepository(Owners)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('OwnerRepository') private ownerRepository: IOwnerRepository, request: Request | any) {
     this.request = request
   }
+  
+  private request: Request
 
-  async execute() {
+  async execute(): Promise<Owners | any> {
     try {
       const owner: Owners = this.request.body
-      if (isInstanceOf(owner, keys<IOwners>())) {
-        return this.ownerRepository.save(owner)
+      const result = await this.ownerRepository.save(owner)
+      if (result.id) {
+        return result
       } else {
         return {
           code: 304,
