@@ -1,7 +1,7 @@
 import { Owners } from "~/entity/Owners";
 import { IOwnerRepository } from "./IOwnerRepository";
 
-export class FakeOperationRepository implements IOwnerRepository {
+export class FakeOwnerRepository implements IOwnerRepository {
 
   private ownerrepository = []
 

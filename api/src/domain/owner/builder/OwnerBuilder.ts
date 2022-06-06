@@ -1,7 +1,7 @@
 import { IOwners } from '../model/IOwners';
 
 
-export class OperationBuilder {
+export class OwnerBuilder {
   private ownerData: IOwners;
 
   constructor(id: string) {
