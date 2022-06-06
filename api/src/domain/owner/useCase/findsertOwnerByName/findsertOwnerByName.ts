@@ -4,7 +4,7 @@ import { Owners } from '~/entity/Owners';
 import { IOwnerRepository } from "../../repository/IOwnerRepository"
 
 @autoInjectable()
-export class FindOwnerByType {
+export class FindsertOwnerByName {
 
   constructor(@inject('OwnerRepository') private ownerRepository: IOwnerRepository, name: string) {
     this.name = name

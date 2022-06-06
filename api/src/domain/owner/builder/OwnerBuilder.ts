@@ -11,7 +11,7 @@ export class OwnerBuilder {
     };
   }
 
-  public setname(name: string) {
+  public setName(name: string) {
     this.ownerData.name = name;
     return this;
   }
