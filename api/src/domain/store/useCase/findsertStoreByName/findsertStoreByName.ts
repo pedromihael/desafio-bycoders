@@ -1,31 +1,34 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Stores } from "@entity/Stores"
+import 'reflect-metadata';
+import { autoInjectable, inject } from "tsyringe"
+import { Stores } from '~/entity/Stores';
+import { IStoreRepository } from "../../repository/IStoreRepository"
 
+@autoInjectable()
 export class FindsertStoreByName {
-  private storeRepository = AppDataSource.getRepository(Stores)
-  private name: string
-  private owner_id: string
 
-  constructor(name: string, owner_id?: string) {
+  constructor(@inject('StoreRepository') private storeRepository: IStoreRepository, name: string, owner_id: string) {
     this.name = name
     this.owner_id = owner_id
   }
 
-  async execute() {
-    if (!this.name || !this.owner_id) {
+  private name: string
+  private owner_id: string
+
+  async execute(): Promise<Stores | any> {
+    try {
+      let store = await this.storeRepository.findOneBy({ name: this.name })
+      if (!store) {
+        store = await this.storeRepository.save({ name: this.name, owner_id: this.owner_id })
+      }
+      return store
+    } catch (error) {
       return {
-        code: 304,
+        error,
+        code: 404,
         entity: "Store",
-        message: `Store not created. Check the body request.`
+        message: `Store with name ${this.name} not found.`
       }
     }
-    let store = await this.storeRepository.findOne({ where: { name: this.name } })
-
-    if (!store) {
-      store = await this.storeRepository.save({ name: this.name, owner_id: this.owner_id })
-    }
-
-    return store
   }
 
 }

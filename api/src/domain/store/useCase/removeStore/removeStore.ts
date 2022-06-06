@@ -1,16 +1,19 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Stores } from "@entity/Stores"
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { IStoreRepository } from "../../repository/IStoreRepository"
+import { Stores } from '~/entity/Stores';
 
+@autoInjectable()
 export class RemoveStore {
-  private storeRepository = AppDataSource.getRepository(Stores)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('StoreRepository') private storeRepository: IStoreRepository, request: Request | any) {
     this.request = request
   }
-
-  async execute() {
+  
+  private request: Request
+  
+  async execute(): Promise<Stores | any> {
     const storeToRemove = await this.storeRepository.findOneBy({ id: this.request.params.id })
     if (storeToRemove) {
       try {

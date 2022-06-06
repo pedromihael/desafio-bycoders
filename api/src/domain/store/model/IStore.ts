@@ -1,4 +1,5 @@
 export interface IStores {
-  name: string
+  id?: string,
+  name: string,
   owner_id: string
 }

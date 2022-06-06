@@ -1,23 +1,24 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Stores } from "@entity/Stores"
-import { isInstanceOf } from "@shared/helper/instanceOf"
-import { IStores } from "../../model/IStore"
-import { keys } from 'ts-transformer-keys'
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { IStoreRepository } from "../../repository/IStoreRepository"
+import { Stores } from '~/entity/Stores';
 
+@autoInjectable()
 export class SaveStore {
-  private storeRepository = AppDataSource.getRepository(Stores)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('StoreRepository') private storeRepository: IStoreRepository, request: Request | any) {
     this.request = request
   }
+  
+  private request: Request
 
-  async execute() {
+  async execute(): Promise<Stores | any> {
     try {
       const store: Stores = this.request.body
-      if (isInstanceOf(store, keys<IStores>())) {
-        return this.storeRepository.save(store)
+      const result = await this.storeRepository.save(store)
+      if (result.id) {
+        return result
       } else {
         return {
           code: 304,
