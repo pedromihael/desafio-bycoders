@@ -1,16 +1,19 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Transactions } from "@entity/Transactions"
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { ITransactionRepository } from "../../repository/ITransactionRepository"
+import { Transactions } from '~/entity/Transactions';
 
+@autoInjectable()
 export class RemoveTransaction {
-  private transactionRepository = AppDataSource.getRepository(Transactions)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('TransactionRepository') private transactionRepository: ITransactionRepository, request: Request | any) {
     this.request = request
   }
-
-  async execute() {
+  
+  private request: Request
+  
+  async execute(): Promise<Transactions | any> {
     const transactionToRemove = await this.transactionRepository.findOneBy({ id: this.request.params.id })
     if (transactionToRemove) {
       try {

@@ -1,10 +1,13 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
+import 'reflect-metadata';
 import { Transactions } from "@entity/Transactions"
+import { autoInjectable, inject } from "tsyringe"
+import { ITransactionRepository } from "../../repository/ITransactionRepository"
 
+@autoInjectable()
 export class FindAllTransactions {
-  private transactionRepository = AppDataSource.getRepository(Transactions)
+  constructor(@inject('TransactionRepository') private transactionRepository: ITransactionRepository) {}
 
-  async execute() {
+  async execute(): Promise<Transactions[]> | null {
     return this.transactionRepository.find()
   }
 

@@ -1,24 +1,29 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Request } from "express"
-import { Transactions } from "@entity/Transactions"
-import { isInstanceOf } from "@shared/helper/instanceOf"
-import { ITransactions } from "../../model/ITransactions"
-import { keys } from 'ts-transformer-keys'
+import 'reflect-metadata';
+import { Request } from 'express';
+import { autoInjectable, inject } from "tsyringe"
+import { ITransactionRepository } from "../../repository/ITransactionRepository"
+import { Transactions } from '../../../../entity/Transactions';
 
 export interface StoreIdentification {
   store_id: string;
 }
-export class SaveTransaction {
-  private transactionRepository = AppDataSource.getRepository(Transactions)
-  private request: Request
-  private store: StoreIdentification
 
-  constructor(request: Request, store: StoreIdentification) {
+@autoInjectable()
+export class SaveTransaction {
+  
+  constructor(
+    @inject('TransactionRepository') private transactionRepository: ITransactionRepository,
+    request: Request | any,
+    store: StoreIdentification
+  ) {
     this.request = request
     this.store = store
   }
+  
+  private request: Request
+  private store: StoreIdentification
 
-  async execute() {
+  async execute(): Promise<Transactions | any> {
     try {
       const transaction: Transactions = this.request.body
       if (this.store) {

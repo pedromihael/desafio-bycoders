@@ -1,27 +1,27 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
+import 'reflect-metadata';
+import { autoInjectable, inject } from "tsyringe"
+import { ITransactionRepository } from "../../repository/ITransactionRepository"
 import { Request } from "express"
-import { Transactions } from "@entity/Transactions"
+import { Transactions } from '~/entity/Transactions';
 
+@autoInjectable()
 export class FindTransactionById {
-  private transactionRepository = AppDataSource.getRepository(Transactions)
-  private request: Request
-
-  constructor(request: Request) {
+  
+  constructor(@inject('TransactionRepository') private transactionRepository: ITransactionRepository, request: Request | any) {
     this.request = request
   }
 
-  async execute() {
-    const transaction = await this.transactionRepository.findOne({ where: { id: this.request.params.id } })
-    
+  private request: Request
+
+  async execute(): Promise<Transactions | any> {
+    const transaction = await this.transactionRepository.findOneBy({ id: this.request.params.id })
     if (!transaction) {
       return {
         code: 404,
         entity: "Transaction",
         message: `Transaction with id ${this.request.params.id} not found.`
       }
-    }
-
-    return transaction
+    } return transaction
   }
 
 }

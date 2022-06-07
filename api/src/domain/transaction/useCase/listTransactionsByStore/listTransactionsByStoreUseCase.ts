@@ -1,12 +1,15 @@
-import { AppDataSource } from "@infrastructure/interface/database/data-source"
-import { Transactions } from "@entity/Transactions"
-import { Stores } from "~/entity/Stores"
-import { Operations } from "~/entity/Operations"
+import { autoInjectable, inject } from "tsyringe"
+import { ITransactionRepository } from "../../repository/ITransactionRepository"
+import { IStoreRepository } from "../../../store/repository/IStoreRepository"
+import { IOperationRepository } from "../../../operation/repository/IOperationRepository"
 
+@autoInjectable()
 export class ListTransactionsByStore {
-  private transactionRepository = AppDataSource.getRepository(Transactions)
-  private storeRepository = AppDataSource.getRepository(Stores)
-  private operationRepository = AppDataSource.getRepository(Operations)
+  constructor(
+    @inject('TransactionRepository') private transactionRepository: ITransactionRepository,
+    @inject('StoreRepository') private storeRepository: IStoreRepository,
+    @inject('OperationRepository') private operationRepository: IOperationRepository
+  ) { }
 
   async execute() {
     const transactions = await this.transactionRepository.find()
