@@ -53,7 +53,7 @@
       "start": "ts-node src/index.ts",
       "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
       "test": "jest",
-      "typeorm": "ts-node-dev  node_modules/typeorm/cli.js",
+      "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
       "seed": "ts-node src/infrastructure/interface/database/seed/index.ts"
    }
 }
