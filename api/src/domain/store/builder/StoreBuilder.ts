@@ -6,8 +6,10 @@ export class StoreBuilder {
   constructor(id: string) {
     this.storeData = {
       id,
+      store: 'any store',
       owner_id: 'any owner id',
-      name: 'any name'
+      name: 'any name',
+      value: 0.0
     };
   }
 
@@ -18,6 +20,11 @@ export class StoreBuilder {
 
   public setOwnerId(owner_id: string) {
     this.storeData.owner_id = owner_id;
+    return this;
+  }
+
+  public setValue(value: number) {
+    this.storeData.value = value;
     return this;
   }
 
