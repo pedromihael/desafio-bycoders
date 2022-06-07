@@ -36,6 +36,11 @@ export class TransactionBuilder {
     return this;
   }
 
+  public setStoreId(store_id: string) {
+    this.transactionData.store_id = store_id;
+    return this;
+  }
+
   public build() {
     return this.transactionData;
   }

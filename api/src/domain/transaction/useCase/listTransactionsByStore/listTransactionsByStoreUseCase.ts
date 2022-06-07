@@ -15,7 +15,7 @@ export class ListTransactionsByStore {
     const transactions = await this.transactionRepository.find()
     const stores = await this.storeRepository.find()
     const operations = await this.operationRepository.find()
-
+    
     const enhancedTransactions = transactions.map(t => {
       const store = stores.find(s => s.id == t.store_id)
       const storeName = store.name
