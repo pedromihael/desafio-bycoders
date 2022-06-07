@@ -11,7 +11,8 @@ export class TransactionBuilder {
       costumer_card_number: 'any costumer card number',
       date: new Date(),
       hour: new Date(),
-      operation_type: 0
+      operation_type: 0,
+      store_id: 'any store id'
     };
   }
 
